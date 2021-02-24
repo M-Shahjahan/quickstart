@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,4 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\TaskController::class, 'index'])->name('home');
+
+Route::post('/user/{id}',[UserController::class,'index']);
+Route::post('/task',[App\Http\Controllers\TaskController::class,'store']);
+Route::delete('/task/{task}',[App\Http\Controllers\TaskController::class,'destroy']);
